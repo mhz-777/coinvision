@@ -1,10 +1,17 @@
 import './App.css'
+import Search from './components/Search';
 
 function App() {
 
   return (
     <div className="App">
-      <h1>hello world!</h1>
+      <header>
+          <h1 className='site-header'>coinvision.</h1>
+          <button className="settings-btn"></button>
+      </header>
+      <main>
+        <Search />
+      </main>
     </div>
   )
 }
