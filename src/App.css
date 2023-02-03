@@ -1,0 +1,69 @@
+@import url(sanitize.css);
+
+:root {
+
+    /* fonts */
+    --primary-font: 'Raleway', sans-serif;
+    --secondary-font: 'Merriweather', serif;
+
+    /* colours */
+    --dark-theme-bg-clr: #1C1C2F;
+    --dark-theme-font-clr: #ffffff;
+
+    --uptrend-font-clr: #56EF6E;
+    --downtrend-font-clr: #FD1717;
+
+    --search-bar-color: #5f65d52d;
+    --search-btn-color-clr: #1026ED;
+}
+
+/* mobile design */
+
+body {
+    background-color: var(--dark-theme-bg-clr);
+}
+
+.App {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 7rem;
+    margin-bottom: 0.375rem;
+}
+
+.site-header {
+    margin: 0;
+    font-family: var(--primary-font);
+    font-size: 2.25rem;
+    color: var(--dark-theme-font-clr);
+}
+
+.settings-btn {
+    background-image: url('./assets/images/settings-svg.svg');
+    background-position: center;
+    background-size: cover;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.settings-btn:focus {
+    animation: spin 1s;
+}
+
+/* keyframes */
+
+@keyframes spin {
+    from {
+        rotate: 0deg;
+    } to {
+        rotate: 360deg;
+    }
+}
