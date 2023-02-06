@@ -1,0 +1,30 @@
+.results-section {
+    height: calc(100vh - 22.5rem);
+    background-color: #28294d;
+    border-radius: 0.625rem;
+    margin-top: 1.75rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.results-section-placeholder {
+    height: calc(100vh - 22.5rem);
+    background-color: #28294d;
+    border-radius: 0.625rem;
+    margin-top: 1.75rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.results-placeholder-heading {
+    color: rgba(255, 255, 255, 0.637);
+    font-family: var(--primary-font);
+    text-align: center;
+    margin: 0 1.5rem 0 1.5rem;
+}
