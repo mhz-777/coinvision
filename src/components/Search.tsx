@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import './Search.css';
 
-const Search = () => {
+interface searchProps {
+    onSearchTermChange: (value:string) => void;
+}
+
+const Search: React.FC<searchProps> = ({onSearchTermChange}) => {
 
     const [userQuery, setUserQuery] = useState<string>('');
     const [invalid, setInvalid] = useState<string>('');
@@ -14,11 +18,12 @@ const Search = () => {
             setInvalid('Cannot submit blank!');
             return;
         }
-
         setInvalid('');
+        onSearchTermChange(userQuery);
     }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setInvalid('');
         setUserQuery(event.target.value);
     }
 
@@ -31,7 +36,7 @@ const Search = () => {
                 placeholder='Enter a coin name (e.g bitcoin)'
                 className='search-input'
             />
-            {invalid && <div style={{ color: 'red' }}>{invalid}</div>}
+            {invalid && <div className='form-error-message'>Please enter a coin name.</div>}
             <button type="submit" className='search-btn'>search</button>
         </form>
     );
