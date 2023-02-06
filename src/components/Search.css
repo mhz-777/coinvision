@@ -2,6 +2,7 @@
 
 .search-bar {
     display: flex;
+    position: relative;
 }
 
 .search-input {
@@ -28,6 +29,8 @@
 
 .search-input::placeholder {
     color: rgba(255, 255, 255, 0.63);
+    font-family: var(--secondary-font);
+    font-weight: 700;
 }
 
 /* remove default focus */
@@ -49,4 +52,15 @@ input:focus {
     
     font-family: var(--primary-font);
     font-size: 1rem;
+}
+
+.form-error-message {
+    color: red;
+    position: absolute;
+    top: 3.85rem;
+    left: 0.35rem;
+
+    font-family: var(--primary-font);
+    font-size: 0.75rem;
+    font-weight: 600;
 }
