@@ -6,8 +6,98 @@
 
     display: flex;
     flex-direction: column;
+}
+
+.results-section-header {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.header-title-image-group {
+    display: flex;
+    align-items: center;
+}
+
+.coin-img {
+    width: 2.5rem;
+    height: 2.5rem;
+    
+}
+
+.coin-header {
+    color: white;
+    font-family: var(--secondary-font);
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 0 0 0 0.5rem;
+}
+
+.coin-creation-header {
+    color: white;
+    font-family: var(--secondary-font);
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.results-section-error {
+    height: calc(100vh - 22.5rem);
+    background-color: #28294d;
+    border-radius: 0.625rem;
+    margin-top: 1.75rem;
+
+    display: flex;
+    align-items: center;
+
+}
+
+.results-section-header {
+    margin-top: 1rem;
+}
+
+.error-message-container {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+
+    background-color: #2e23783f;
+    border-radius: 0.625rem;
+
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.errorsvg-img {
+    width: 6.25rem;
+    height: 6.25rem;
+}
+
+.error-message-heading {
+    color: white;
+    font-family: var(--primary-font);
+
+    margin-top: 0.75rem;
+    margin-bottom: 1.75rem;
+}
+
+.error-message-desc {
+    color: white;
+    font-family: var(--secondary-font);
+    font-size: 1rem;
+    font-weight: 400;
+
+    text-align: center;
+
+    margin: 0 1rem 1rem 1rem;
+}
+
+.error-message-link {
+    color: var(--uptrend-font-clr);
+    text-decoration: none;
 }
 
 .results-section-placeholder {
