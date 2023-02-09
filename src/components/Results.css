@@ -1,4 +1,4 @@
-.results-section {
+.results-section-container {
     height: calc(100vh - 22.5rem);
     background-color: #28294d;
     border-radius: 0.625rem;
@@ -14,6 +14,7 @@
     align-items: center;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
+    margin-top: 2rem;
 }
 
 .header-title-image-group {
@@ -43,19 +44,107 @@
     margin: 0;
 }
 
+
+.header-pricetrend {
+    font-family: var(--primary-font);
+    font-weight: 700;
+    text-align: center;
+    font-size: 1rem;
+    
+    margin: 0;
+    color: white;
+
+    width: 6.25rem;
+    height: 2.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.header-price-uptrend::before {
+    content: '\25B2';
+    margin-right: 0.75rem;
+}
+
+.header-price-uptrend {
+   background-color: rgb(12, 236, 12);
+   border-radius: 1rem;
+}
+
+.header-price-downtrend::before {
+    content: '\25BC';
+    margin-right: 0.75rem;
+}
+
+.header-price-downtrend {
+    background-color: var(--downtrend-font-clr);
+    border-radius: 1rem;
+}
+
+.header-price-neutral {
+    background-color: gainsboro;
+    border-radius: 1rem;
+}
+
+.results-section-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+    background-color: #2e23783f;
+
+    margin-top: 2.25rem;
+    margin-left: 0.875rem;
+    margin-right: 0.875rem;
+    border-radius: 1rem;
+
+    overflow-y: scroll;
+}
+
+.results-div {
+    text-align: center;
+    margin-top: 1.125rem;
+    margin-bottom: 2rem;
+}
+
+.results-heading {
+    color: white;
+    font-family: var(--secondary-font);
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.results-data {
+    color: white;
+    font-family: var(--secondary-font);
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .results-section-error {
     height: calc(100vh - 22.5rem);
     background-color: #28294d;
     border-radius: 0.625rem;
     margin-top: 1.75rem;
-
     display: flex;
     align-items: center;
-
-}
-
-.results-section-header {
-    margin-top: 1rem;
 }
 
 .error-message-container {
