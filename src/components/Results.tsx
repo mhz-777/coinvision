@@ -13,9 +13,9 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
         coinName: '',
         coinImage: '',
         coinPrice: '',
-        creationDate: '',
         dailyChange: '',
-        dailyVolume: ''
+        ath: '',
+        marketcapRank: ''
     });
 
     // state to handle error in query
@@ -35,9 +35,9 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
                 coinName: coinData.name,
                 coinImage: coinData.image.small,
                 coinPrice: coinData.market_data.current_price.cad,
-                creationDate: coinData.genesis_date,
                 dailyChange: coinData.market_data.price_change_percentage_24h,
-                dailyVolume: coinData.market_data.total_volume.cad
+                ath: coinData.market_data.ath.cad,
+                marketcapRank: coinData.market_data.market_cap_rank
             });
             setValidSearch(true);
         }catch (error) {
@@ -45,6 +45,10 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
             setValidSearch(false);
         }
 
+    }
+
+    const formatData = (value:string) => {
+        return Math.round((Number(value) + Number.EPSILON) * 100) / 100;
     }
 
     // get data when searchTerm is updated with value
@@ -57,14 +61,38 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
     // render results, otherwise fallback to placeholder
     if(searchTerm && validSearch === true) {
         return (
-            <section className="results-section">
+            <section className="results-section-container">
                 <header className="results-section-header">
                     <section className="header-title-image-group">
                         <img src={coinAttributes.coinImage} alt="coin" className="coin-img" />
                         <h1 className="coin-header">{coinAttributes.coinName}</h1>
                     </section>
-                    <h3 className="coin-creation-header">Created: {coinAttributes.creationDate}</h3>
+                    <section className="header-pricetrend-section">
+                        {Number(coinAttributes.dailyChange) > 0 &&
+                            <h1 className='header-price-uptrend header-pricetrend'>{formatData(coinAttributes.dailyChange)}%</h1>
+                        }
+                        {Number(coinAttributes.dailyChange) < 0 &&
+                            <h1 className='header-price-downtrend header-pricetrend'>{formatData(coinAttributes.dailyChange) * -1}%</h1>
+                        }
+                        {Number(coinAttributes.dailyChange) == 0 &&
+                            <h1 className='header-price-neutral header-pricetrend'>{formatData(coinAttributes.dailyChange)}%</h1>
+                        }
+                    </section>
                 </header>
+                <section className="results-section-data">
+                        <div className="current-price results-div">
+                            <h2 className="results-heading">current price</h2>
+                            <h1 className="results-data">${coinAttributes.coinPrice}</h1>
+                        </div>
+                        <div className="ath results-div">
+                            <h2 className="results-heading">all time high (ATH)</h2>
+                            <h1 className="results-data">${coinAttributes.ath}</h1>
+                        </div>
+                        <div className="marketcap-rank results-div">
+                            <h2 className="results-heading">marketcap rank</h2>
+                            <h1 className="results-data">{coinAttributes.marketcapRank}</h1>
+                        </div>
+                </section>       
             </section>
         );
     }else if(error === true){
@@ -75,7 +103,7 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
                     <h1 className="error-message-heading">Coin not found.</h1>
                     <p className="error-message-desc">
                         Click 
-                        <a href='https://docs.google.com/spreadsheets/d/1wTTuxXt8n9q7C4NDXqQpI3wpKu1_5bGVmP9Xz0XGSyU/edit#gid=0' target='_blank' className='error-message-link'> here </a> 
+                        <a href='https://api.coingecko.com/api/v3/coins/list' target='_blank' className='error-message-link'> here </a> 
                         to be redirected to the API coins list, and then try again.
                     </p>
                     <p className="error-message-desc">
