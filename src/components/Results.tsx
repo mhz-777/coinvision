@@ -15,7 +15,10 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
         coinPrice: '',
         dailyChange: '',
         ath: '',
-        marketcapRank: ''
+        athChangePercent: '',
+        marketcapRank: '',
+        dailyHigh: '',
+        dailyLow: ''
     });
 
     // state to handle error in query
@@ -37,7 +40,10 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
                 coinPrice: coinData.market_data.current_price.cad,
                 dailyChange: coinData.market_data.price_change_percentage_24h,
                 ath: coinData.market_data.ath.cad,
-                marketcapRank: coinData.market_data.market_cap_rank
+                athChangePercent: coinData.market_data.ath_change_percentage.cad,
+                marketcapRank: coinData.market_data.market_cap_rank,
+                dailyHigh: coinData.market_data.high_24h.cad,
+                dailyLow: coinData.market_data.low_24h.cad
             });
             setValidSearch(true);
         }catch (error) {
@@ -47,8 +53,30 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
 
     }
 
+    // function to round off data to prevent overflow for smaller denominations
     const formatData = (value:string) => {
         return Math.round((Number(value) + Number.EPSILON) * 100) / 100;
+    }
+
+    // function to calculate width of the dynamic slider
+    const calcSliderWidth = () => {
+
+        // cast values to number type
+        let currentPrice = Number(coinAttributes.coinPrice);
+        let minPrice = Number(coinAttributes.dailyLow);
+        let maxPrice = Number(coinAttributes.dailyHigh);
+
+        // set div width to 0 if price is lower then 24hr low
+        if(currentPrice < minPrice) {
+            return 0;
+        }
+
+        // set div width to 100 if price is higher than 24hr high
+        if(currentPrice > maxPrice) {
+            return 100;
+        }
+
+        return ((currentPrice - minPrice) / (maxPrice - minPrice)) * 100;
     }
 
     // get data when searchTerm is updated with value
@@ -79,6 +107,16 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
                         }
                     </section>
                 </header>
+                <section className="dynamic-price-slider">
+                    <div className="full-slider">
+                        <div className="dynamic-slider" style={{width: `${calcSliderWidth()}%`}}></div>
+                    </div>
+                    <div className="dynamic-price-headings">
+                        <h4>${coinAttributes.dailyLow}</h4>
+                        <h4>24H Range</h4>
+                        <h4>${coinAttributes.dailyHigh}</h4>
+                    </div>
+                </section>
                 <section className="results-section-data">
                         <div className="current-price results-div">
                             <h2 className="results-heading">current price</h2>
@@ -86,7 +124,15 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
                         </div>
                         <div className="ath results-div">
                             <h2 className="results-heading">all time high (ATH)</h2>
-                            <h1 className="results-data">${coinAttributes.ath}</h1>
+                            <h1 className="results-data" id='results-data-ath'>
+                                ${coinAttributes.ath}
+                                {Number(coinAttributes.athChangePercent) < 0 && 
+                                    <span className="ath-percentage-change" id='negative-ath'>&#9660;{formatData(coinAttributes.athChangePercent) * -1}%</span>
+                                }
+                                {Number(coinAttributes.athChangePercent) > 0 && 
+                                    <span className="ath-percentage-change" id='positive-ath'>&#9650;{formatData(coinAttributes.athChangePercent)}%</span>
+                                }
+                            </h1>
                         </div>
                         <div className="marketcap-rank results-div">
                             <h2 className="results-heading">marketcap rank</h2>
