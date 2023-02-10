@@ -6,6 +6,8 @@
 
     display: flex;
     flex-direction: column;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .results-section-header {
@@ -138,7 +140,7 @@
     flex-direction: column;
     align-items: center;
 
-    margin-top: 0.625rem;
+    margin-top: 1.5rem;
     margin-left: 0.875rem;
     margin-right: 0.875rem;
     padding-bottom: 1.25rem;
@@ -149,15 +151,9 @@
 
 .results-div {
     text-align: center;
-
-    padding: 0.875rem 0 0.875rem 0;
     margin-top: 1.125rem;
     
     width: 100%;
-
-    background-color: rgba(99, 27, 154, 0.24);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    
     border-radius: 1rem;
     
 }
@@ -200,7 +196,58 @@
 
 
 
+/* SECTION RESULTS SECTION SETTINGS STYLING */
 
+.results-section-settings {
+    height: calc(100vh - 22.5rem);
+    background-color: #28294d;
+    border-radius: 0.625rem;
+    margin-top: 1.75rem;
+    
+}
+
+.settings-header {
+    text-align: center;
+    color: white;
+    font-family: var(--primary-font);
+    padding-top: 2.25rem;
+    padding-bottom: 3.75rem;
+}
+
+.results-section-settings label {
+    font-family: var(--secondary-font);
+    color: white;
+    font-size: 1.5rem;
+}
+
+.theme-settings {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 1.875rem;
+    margin-right: 1.875rem;
+    margin-bottom: 3.25rem;
+}
+
+.currency-settings {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 1.875rem;
+    margin-right: 1.875rem;
+}
+
+.results-section-settings select {
+    border: none;
+    font-family: var(--secondary-font);
+    font-size: 1rem;
+    border-radius: 0.625rem;
+    width: 7rem;
+    height: 3.125rem;
+    text-align: center;
+    background-color: black;
+    color: white;
+}
 
 
 
