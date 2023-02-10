@@ -4,9 +4,10 @@ import errorSVG from '../assets/images/errorsvgtriangle.svg';
 
 interface resultProps {
     searchTerm: string;
+    isClicked: boolean;
 }
 
-const Results: React.FC<resultProps> = ({searchTerm}) => {
+const Results: React.FC<resultProps> = ({searchTerm, isClicked}) => {
 
     // state to manage coin attributes
     const [coinAttributes, setCoinAttributes] = useState({
@@ -37,13 +38,13 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
                 ...coinAttributes,
                 coinName: coinData.name,
                 coinImage: coinData.image.small,
-                coinPrice: coinData.market_data.current_price.cad,
-                dailyChange: coinData.market_data.price_change_percentage_24h,
-                ath: coinData.market_data.ath.cad,
-                athChangePercent: coinData.market_data.ath_change_percentage.cad,
+                coinPrice: coinData.market_data.current_price[currencyChoice],
+                dailyChange: coinData.market_data.price_change_percentage_24h_in_currency[currencyChoice],
+                ath: coinData.market_data.ath[currencyChoice],
+                athChangePercent: coinData.market_data.ath_change_percentage[currencyChoice],
                 marketcapRank: coinData.market_data.market_cap_rank,
-                dailyHigh: coinData.market_data.high_24h.cad,
-                dailyLow: coinData.market_data.low_24h.cad
+                dailyHigh: coinData.market_data.high_24h[currencyChoice],
+                dailyLow: coinData.market_data.low_24h[currencyChoice]
             });
             setValidSearch(true);
         }catch (error) {
@@ -77,6 +78,22 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
         }
 
         return ((currentPrice - minPrice) / (maxPrice - minPrice)) * 100;
+    }
+
+    // state to store theme settings
+    const [themeChoice , setThemeChoice] = useState<string>('Light');
+
+    // function to handle change of theme
+    const handleThemeChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setThemeChoice(event.target.value);
+    }
+
+    // state to store currency setting
+    const [currencyChoice, setCurrencyChoice] = useState<string>('cad');
+
+    // function to handle change of currency
+    const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        setCurrencyChoice(event.target.value);
     }
 
     // get data when searchTerm is updated with value
@@ -120,12 +137,12 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
                 <section className="results-section-data">
                         <div className="current-price results-div">
                             <h2 className="results-heading">current price</h2>
-                            <h1 className="results-data">${coinAttributes.coinPrice}</h1>
+                            <h1 className="results-data">{currencyChoice.toUpperCase()} ${coinAttributes.coinPrice}</h1>
                         </div>
                         <div className="ath results-div">
                             <h2 className="results-heading">all time high (ATH)</h2>
                             <h1 className="results-data" id='results-data-ath'>
-                                ${coinAttributes.ath}
+                            {currencyChoice.toUpperCase()} ${coinAttributes.ath}
                                 {Number(coinAttributes.athChangePercent) < 0 && 
                                     <span className="ath-percentage-change" id='negative-ath'>&#9660;{formatData(coinAttributes.athChangePercent) * -1}%</span>
                                 }
@@ -138,7 +155,7 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
                             <h2 className="results-heading">marketcap rank</h2>
                             <h1 className="results-data">{coinAttributes.marketcapRank}</h1>
                         </div>
-                </section>       
+                </section>    
             </section>
         );
     }else if(error === true){
@@ -158,7 +175,30 @@ const Results: React.FC<resultProps> = ({searchTerm}) => {
                 </section>
             </section>
         );
-    }else {
+    }else if(isClicked === true){
+        return (
+            <section className="results-section-settings">
+                <h1 className="settings-header">settings</h1>
+                <div className="theme-settings">
+                    <label htmlFor="theme">theme</label>
+                    <select name="theme" id="results-section-theme" onChange={handleThemeChange} value={themeChoice}>
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </div>
+                <div className="currency-settings">
+                    <label htmlFor="currency">currency</label>
+                    <select name="currency" id="results-section-currency" onChange={handleCurrencyChange} value={currencyChoice}>
+                        <option value="aud">AUD</option>
+                        <option value="cad">CAD</option>
+                        <option value="jpy">JPY</option>
+                        <option value="usd">USD</option>
+                    </select>
+                </div>
+            </section>
+        )
+    }
+    else {
         return (
             <section className="results-section-placeholder">
                 <h1 className="results-placeholder-heading">Enter a coin above to retrieve data.</h1>
