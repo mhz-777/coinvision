@@ -6,14 +6,22 @@ import { useEffect, useState } from 'react';
 function App() {
 
   // user input state
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState<string>('');
 
-  // api data
-  const [apiData, setApiData] = useState<string>('');
+  // api status state 
+  const [apiStatus, setApiStatus] = useState<string>('');
+
+  // settings menu state
+  const [isClicked, setClicked] = useState<boolean>(false);
 
   // passdown function for search
   const handleSearchTermChange = (value:string) => {
     setSearchTerm(value);
+  }
+
+  //function for settings menu
+  const handleMenuClick = () => {
+    setClicked(!isClicked);
   }
 
   // ping api to check status on initial load
@@ -21,17 +29,17 @@ function App() {
     const pingAPI = async () => {
       const response = await fetch('https://api.coingecko.com/api/v3/ping');
       if(!response.ok) {
-        setApiData('down');
+        setApiStatus('down');
       }
     };
     pingAPI();
-  }, [])
+  }, []);
 
   return (
     <div className="App">
       <header>
           <h1 className='site-header'>coinvision.</h1>
-          <button className="settings-btn"></button>
+          <button className="settings-btn" onClick={handleMenuClick}></button>
       </header>
       <main>
         <Search 
@@ -39,13 +47,14 @@ function App() {
         />
         <Results
           searchTerm={searchTerm}
+          isClicked={isClicked}
         />
         <footer className="main-sec-footer">
           <p className="api-status-header">api status:</p>
-          {apiData != 'down' &&
+          {apiStatus != 'down' &&
             <div className="api-operational"></div>
           }
-          {apiData == 'down' &&
+          {apiStatus == 'down' &&
             <div className="api-unoperational"></div>
           }
         </footer>
