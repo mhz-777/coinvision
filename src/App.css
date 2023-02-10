@@ -5,10 +5,11 @@
     /* fonts */
     --primary-font: 'Raleway', sans-serif;
     --secondary-font: 'Merriweather', serif;
+    --data-display-font: 'Roboto', sans-serif;
 
     /* colours */
-    --dark-theme-bg-clr: #1C1C2F;
-    --dark-theme-font-clr: #ffffff;
+    --light-theme-bg-clr: #1C1C2F;
+    --light-theme-font-clr: #ffffff;
 
     --uptrend-font-clr: #56EF6E;
     --downtrend-font-clr: #FD1717;
@@ -20,7 +21,7 @@
 /* mobile design */
 
 body {
-    background-color: var(--dark-theme-bg-clr);
+    background-color: var(--light-theme-bg-clr);
 }
 
 .App {
@@ -40,7 +41,7 @@ header{
     margin: 0;
     font-family: var(--primary-font);
     font-size: 2.25rem;
-    color: var(--dark-theme-font-clr);
+    color: var(--light-theme-font-clr);
 }
 
 .settings-btn {
@@ -74,21 +75,20 @@ header{
 }
 
 .api-operational {
-    width: 0.625rem;
-    height: 0.625rem;
+    width: 0.825rem;
+    height: 0.825rem;
     background-color: var(--uptrend-font-clr);
     border-radius: 50%;
     margin-left: 0.75rem;
-    margin-bottom: 0.125rem;
+    
 }
 
 .api-unoperational {
-    width: 0.625rem;
-    height: 0.625rem;
+    width: 0.825rem;
+    height: 0.825rem;
     background-color: var(--downtrend-font-clr);
     border-radius: 50%;
     margin-left: 0.75rem;
-    margin-bottom: 0.125rem;
 }
 
 .site-footer {
