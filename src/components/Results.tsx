@@ -5,9 +5,10 @@ import errorSVG from '../assets/images/errorsvgtriangle.svg';
 interface resultProps {
     searchTerm: string;
     isClicked: boolean;
+    menuClicked: ()=>void;
 }
 
-const Results: React.FC<resultProps> = ({searchTerm, isClicked}) => {
+const Results: React.FC<resultProps> = ({searchTerm, isClicked, menuClicked}) => {
 
     // state to manage coin attributes
     const [coinAttributes, setCoinAttributes] = useState({
@@ -101,7 +102,25 @@ const Results: React.FC<resultProps> = ({searchTerm, isClicked}) => {
         if(searchTerm != '') {
             getCoinData();
         }
-    }, [searchTerm])
+    }, [searchTerm]);
+
+    // render when currency change is selected
+    useEffect(()=>{
+        if(validSearch === true){
+            getCoinData();
+        }
+    }, [currencyChoice]);
+
+    //store 
+
+    // change theme color
+    useEffect(()=> {
+        if(themeChoice === 'dark'){
+            document.body.style.backgroundColor = "black";
+        }else {
+            document.body.style.backgroundColor = '';
+        }
+    }, [themeChoice]);
 
     // render results, otherwise fallback to placeholder
     if(searchTerm && validSearch === true) {
@@ -155,7 +174,30 @@ const Results: React.FC<resultProps> = ({searchTerm, isClicked}) => {
                             <h2 className="results-heading">marketcap rank</h2>
                             <h1 className="results-data">{coinAttributes.marketcapRank}</h1>
                         </div>
-                </section>    
+                </section>
+                
+                <div className={isClicked ? 'dropdown-settings' : 'dropdown-settings-hidden'}>
+                    <h1 className="settings-header">settings</h1>
+                    <div className="theme-settings">
+                        <label htmlFor="theme">theme</label>
+                        <select name="theme" id="results-section-theme" onChange={handleThemeChange} value={themeChoice}>
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                        </select>
+                        </div>
+                    <div className="currency-settings">
+                        <label htmlFor="currency">currency</label>
+                        <select name="currency" id="results-section-currency" onChange={handleCurrencyChange} value={currencyChoice}>
+                            <option value="aud">AUD</option>
+                            <option value="cad">CAD</option>
+                            <option value="jpy">JPY</option>
+                            <option value="usd">USD</option>
+                        </select>
+                    </div>
+                    <button className="close-settings-btn" onClick={menuClicked}></button>
+                </div>
+                
+                
             </section>
         );
     }else if(error === true){
