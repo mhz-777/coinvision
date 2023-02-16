@@ -1,6 +1,6 @@
 .results-section-container {
     height: calc(100vh - 22.5rem);
-    background-color: #28294d;
+    background-color: #5f65d52d;
     border-radius: 0.625rem;
     margin-top: 1.75rem;
 
@@ -147,6 +147,7 @@
 
     border-radius: 1rem;
     overflow-y: scroll;
+
 }
 
 .results-div {
@@ -169,7 +170,7 @@
 .results-data {
     color: white;
     font-family: var(--data-display-font);
-    font-weight: 400;
+    font-weight: 300;
     font-size: 2rem;
     margin: 0;
 }
@@ -250,8 +251,66 @@
 }
 
 
+/* DROPDOWN SETTINGS DIV */
 
+.dropdown-settings {
+    position: absolute;
+    top: 0;
+    left: 0;
 
+    width: 100vw;
+    height: 45vh;
+    border-bottom-left-radius: 0.625rem;
+    border-bottom-right-radius: 0.625rem;
+
+    background-color: #5F64D5;
+    color: white;
+    font-family: var(--secondary-font);
+
+    animation: slideIn 0.5s;
+}
+
+.dropdown-settings-hidden {
+    animation: slide-out 0.5s;
+    display: none;
+}
+
+.close-settings-btn {
+    background-image: url('../assets/images/close-svg.svg');
+    background-position: center;
+    background-size: cover;
+
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+
+    width: 2rem;
+    height: 2rem;
+
+    cursor: pointer;
+    
+    margin-top: 5rem;
+    
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+@keyframes slideIn {
+    from {
+        top: -600px;
+    }to {
+        top: 0;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        top: 0;
+    }to {
+        top: -600px;
+    }
+}
 
 
 /* SECTION RESULTS SECTION ERROR STYLING */
@@ -308,7 +367,7 @@
 
 .results-section-placeholder {
     height: calc(100vh - 22.5rem);
-    background-color: #28294d;
+    background-color: #5f65d52d;
     border-radius: 0.625rem;
     margin-top: 1.75rem;
 
