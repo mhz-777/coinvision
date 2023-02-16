@@ -48,6 +48,7 @@ function App() {
         <Results
           searchTerm={searchTerm}
           isClicked={isClicked}
+          menuClicked={handleMenuClick}
         />
         <footer className="main-sec-footer">
           <p className="api-status-header">api status:</p>
