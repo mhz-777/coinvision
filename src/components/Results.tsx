@@ -111,16 +111,6 @@ const Results: React.FC<resultProps> = ({searchTerm, isClicked, menuClicked}) =>
         }
     }, [currencyChoice]);
 
-    //store 
-
-    // change theme color
-    useEffect(()=> {
-        if(themeChoice === 'dark'){
-            document.body.style.backgroundColor = "black";
-        }else {
-            document.body.style.backgroundColor = '';
-        }
-    }, [themeChoice]);
 
     // render results, otherwise fallback to placeholder
     if(searchTerm && validSearch === true) {
