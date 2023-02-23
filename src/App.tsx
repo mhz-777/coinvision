@@ -14,12 +14,15 @@ function App() {
   // settings menu state
   const [isClicked, setClicked] = useState<boolean>(false);
 
+  // theme state
+  const [theme, setTheme] = useState<string>('light');
+
   // passdown function for search
   const handleSearchTermChange = (value:string) => {
     setSearchTerm(value);
   }
 
-  //function for settings menu
+  // function for settings menu
   const handleMenuClick = () => {
     setClicked(!isClicked);
   }
@@ -37,7 +40,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>
+      <header className='app-header'>
           <h1 className='site-header'>coinvision.</h1>
           <button className="settings-btn" onClick={handleMenuClick}></button>
       </header>
