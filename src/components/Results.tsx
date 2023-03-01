@@ -131,6 +131,7 @@ const Results: React.FC<resultProps> = ({searchTerm, isClicked, menuClicked}) =>
                         {Number(coinAttributes.dailyChange) == 0 &&
                             <h1 className='header-price-neutral header-pricetrend'>{formatData(coinAttributes.dailyChange)}%</h1>
                         }
+                        <button className="add-fav-btn"></button>
                     </section>
                 </header>
                 <section className="dynamic-price-slider">
