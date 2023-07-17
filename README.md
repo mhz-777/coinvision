@@ -13,12 +13,10 @@ This is my own project, wanted to get some familarity with using some APIs, so I
 # Features
 
 * Search Coins
-* Add Coins to Favourites (PLANNED)
-* View Market Trends (PLANNED)
-* Graph 7 day trend on desktop (PLANNED)
+* Add Coins to Favourites
+* View Market Trends
+* Graph 7 day trend
 
 # Design
 
-This is my own design as well. I tried my best but alas I am not a designer. Mobile first as per usual, however more features will be avaliable on desktop because
-of the larger screen real-estate.
-
+Enjoy this new design old one was ugly to me but maybe this new one is ugly to you! Anyways lets get it.
