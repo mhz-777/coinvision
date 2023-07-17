@@ -10,6 +10,8 @@ const Search: React.FC<searchProps> = ({onSearchTermChange}) => {
     const [userQuery, setUserQuery] = useState<string>('');
     const [invalid, setInvalid] = useState<string>('');
 
+
+    // function to handle submission with error check
     const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
@@ -33,7 +35,6 @@ const Search: React.FC<searchProps> = ({onSearchTermChange}) => {
                 type="text"
                 value={userQuery}
                 onChange={handleChange}
-                placeholder='Enter a coin name (e.g bitcoin)'
                 className='search-input'
             />
             {invalid && <div className='form-error-message'>Please enter a coin name.</div>}

@@ -25,8 +25,8 @@
 }
 
 .coin-img {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
     
 }
 
@@ -34,7 +34,7 @@
     color: white;
     font-family: var(--secondary-font);
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin: 0 0 0 0.5rem;
 }
 
@@ -56,12 +56,12 @@
     font-family: var(--data-display-font);
     font-weight: 700;
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.825rem;
     
     margin: 0;
     color: white;
 
-    width: 6.25rem;
+    width: 4.25rem;
     height: 2.5rem;
 
     display: flex;
@@ -87,17 +87,16 @@
 
 .header-price-uptrend::before {
     content: '\25B2';
-    margin-right: 0.75rem;
+    
 }
 
 .header-price-uptrend {
-   background-color: rgb(12, 236, 12);
+   background-color: rgb(31, 167, 31);
    border-radius: 1rem;
 }
 
 .header-price-downtrend::before {
     content: '\25BC';
-    margin-right: 0.75rem;
 }
 
 .header-price-downtrend {
@@ -143,7 +142,7 @@
 .dynamic-slider {
 
     height: 1rem;
-    background-color: rgb(12, 236, 12);
+    background-color: rgb(31, 167, 31);
     border-radius: 1rem;
 }
 
@@ -357,13 +356,14 @@
 }
 
 .errorsvg-img {
-    width: 6.25rem;
-    height: 6.25rem;
+    width: 3.25rem;
+    height: 3.25rem;
 }
 
 .error-message-heading {
     color: white;
     font-family: var(--primary-font);
+    font-size: 1.5rem;
 
     margin-top: 0.75rem;
     margin-bottom: 1.75rem;
@@ -372,10 +372,11 @@
 .error-message-desc {
     color: white;
     font-family: var(--secondary-font);
-    font-size: 1rem;
+    font-size: 0.75rem;
     font-weight: 400;
 
     text-align: center;
+
 
     margin: 0 1rem 1rem 1rem;
 }
@@ -384,6 +385,10 @@
     color: var(--uptrend-font-clr);
     text-decoration: none;
 }
+
+
+
+/* RESULTS SECTION PLACEHOLDER STYLING */
 
 .results-section-placeholder {
     height: calc(100vh - 22.5rem);
@@ -398,8 +403,9 @@
 }
 
 .results-placeholder-heading {
-    color: rgba(255, 255, 255, 0.637);
+    color: rgba(255, 255, 255, 0.304);
     font-family: var(--primary-font);
+    font-style: italic;
     text-align: center;
-    margin: 0 1.5rem 0 1.5rem;
+    font-size: 1rem;
 }

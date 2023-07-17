@@ -1,0 +1,219 @@
+
+
+.settings-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100lvw;
+    height: 100lvh;
+    z-index: 1;
+
+    background-color: rgba(0, 0, 0, 0.799);
+    
+}
+
+.settings {
+    z-index: 2;
+    background-color: #2D2D4F;
+
+    width: 50%;
+    height: 100%;
+    float: right;
+
+    overflow: hidden;
+    
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}
+
+.settings-header {
+    color: white;
+    font-family: var(--secondary-font);
+    font-weight: 300;
+
+    font-size: 1rem;
+    text-align: center;
+
+    margin-top: 4rem;
+}
+
+.theme-toggle {
+    display: inline-block;
+    position: relative;
+    width: 4rem;
+    height: 1.875rem;
+
+    background-color: #848ff433;
+    border-radius: 1.875rem;
+
+    top: 1.25rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#theme {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-slider {
+    position: absolute;
+    cursor: pointer;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    transition: 0.25s;
+}
+
+.theme-slider::before {
+    position: absolute;
+    content: "";
+    height: 1.5rem;
+    width: 1.5rem;
+    left: 4px;
+    bottom: 4px;
+    background-color: #848FF4;
+
+    border-radius: 1.875rem;
+
+    transition: 0.25s;
+
+}
+
+#theme:checked + .theme-slider::before {
+    transform: translateX(2rem);
+}
+
+
+.theme-selection-text-container {
+
+    display: flex;
+    justify-content: center;
+    gap: 0.625rem;
+
+    margin-top: 0.625rem;
+}
+
+.theme-choice {
+
+    color: white;
+    font-size: 0.8rem;
+    font-family: var(--secondary-font);
+    font-weight: 300;
+}
+
+
+.original-slider {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 8rem; 
+    height: 1.5rem;
+    background: #848ff433;
+    outline: none;
+    
+
+    border-radius: 1.875rem;
+    transform: rotate(-90deg);
+    transform-origin: center;
+
+    
+    /* padding is inverted since its transformed to vertical lol */
+    padding-right: 0.2rem;
+    padding-left: 0.2rem;
+
+}
+
+.original-slider::-webkit-slider-thumb {
+
+    -webkit-appearance: none;
+    appearance: none;
+
+    width: 1.25rem;
+    height: 1.25rem;
+    background: #848FF4; 
+    cursor: pointer; 
+    border-radius: 50%;
+    
+    border: none;
+    outline: none;
+    
+
+}
+
+.original-slider::-moz-range-thumb {
+
+    width: 1.25rem;
+    height: 1.25rem;
+    background: #848FF4; 
+    cursor: pointer; 
+    border-radius: 50%;
+    
+    border: none;
+    outline: none;
+  }
+
+
+.currency-selection-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 4rem;
+    position: relative;
+}
+
+.currency-selection-labels-container {
+
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    top: -3.2rem;
+    left: 8.5rem;
+}
+
+.currency-labels {
+
+    color: white;
+    margin: 0;
+    padding: 0;
+
+    font-family: var(--secondary-font);
+    font-size: 0.65rem;
+    font-weight: 300;
+
+    text-transform: uppercase;
+
+    padding: 0.5rem 0 0.5rem 0;
+}
+
+
+.settings-escape-btn {
+
+    background-color: #848ff433;
+    border: none;
+    
+    position: absolute;
+    bottom: 3rem;
+    
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    color: white;
+    border-radius: 50%;
+
+    width: 2.5rem;
+    height: 2.5rem;
+
+    font-family: var(--primary-font);
+    font-weight: 700;
+}
