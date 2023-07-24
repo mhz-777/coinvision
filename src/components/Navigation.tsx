@@ -15,7 +15,7 @@ const Navigation: React.FC<navigationProps> = ({siteSection, handleChange}) => {
 
     return (
         <div className="toggle-nav-container">
-          <span className='toggle-text'>Find</span>
+          <span className={`toggle-text ${siteSection ? 'toggle-text-disabled' : ''}`}>Find</span>
           <label htmlFor="toggle" className='toggle'>
               <input 
               type="checkbox" 
@@ -26,7 +26,7 @@ const Navigation: React.FC<navigationProps> = ({siteSection, handleChange}) => {
               />
               <span className="slider"></span>
           </label>
-          <span className="toggle-text-disabled">Favorites</span>
+          <span className={`toggle-text ${siteSection ? '' : 'toggle-text-disabled'}`}>Favorites</span>
         </div>
     );
 }

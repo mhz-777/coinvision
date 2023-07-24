@@ -27,8 +27,8 @@
 .toggle {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 30px;
+    
+    height: 1.875rem;
   }
   
   .toggle input {
@@ -36,28 +36,18 @@
   }
   
   .slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    
     cursor: pointer;
     background-color: hsla(237, 58%, 60%, 0.5);
-    border-radius: 30px;
+    border-radius: 1.875rem;
     transition: 0.4s;
   }
   
   .slider:before {
-    position: absolute;
-    content: "";
-
-    height: 26px;
-    width: 26px;
-    left: 2px;
-    bottom: 2px;
+    
     background-color: var(--accent-clr);
     border-radius: 50%;
-    transition: 0.4s;
+    transition: 0.3s;
   }
   
   input:checked + .slider {

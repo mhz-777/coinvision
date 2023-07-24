@@ -1,411 +1,83 @@
-.results-section-container {
-    height: calc(100vh - 22.5rem);
-    background-color: #5f65d52d;
-    border-radius: 0.625rem;
-    margin-top: 1.75rem;
 
-    display: flex;
-    flex-direction: column;
 
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+.coindata-section {
+
+    margin-top: 2.5rem;
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+
+
 }
 
-.results-section-header {
+.coindata-header-section {
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-    margin-top: 2rem;
+    
 }
 
-.header-title-image-group {
+.coindata-nameprice-container {
+
     display: flex;
     align-items: center;
 }
 
-.coin-img {
-    width: 2rem;
-    height: 2rem;
-    
+.coindata-nameprice-group {
+
+    margin-left: 0.5rem;
 }
 
-.coin-header {
+.coindata-name {
+
+    margin: 0;
+
     color: white;
     font-family: var(--secondary-font);
-    font-weight: 700;
     font-size: 1.25rem;
-    margin: 0 0 0 0.5rem;
+    font-weight: 700;
+
 }
 
-.coin-creation-header {
+.coindata-price {
+
+    margin: 0;
+
+    margin-top: -0.3rem;
+
     color: white;
-    font-family: var(--secondary-font);
+    font-family: var(--data-display-font);
     font-size: 0.75rem;
-    font-weight: 400;
-    margin: 0;
-}
-
-.header-pricetrend-section {
-    display: flex;
-    align-items: center;
-    gap: 0.825rem;
-}
-
-.header-pricetrend {
-    font-family: var(--data-display-font);
-    font-weight: 700;
-    text-align: center;
-    font-size: 0.825rem;
-    
-    margin: 0;
-    color: white;
-
-    width: 4.25rem;
-    height: 2.5rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-.add-fav-btn {
-    width: 2.125rem;
-    height: 2.125rem;
-    border-radius: 0.625rem;
-
-    background-image: url('../assets/images/favoritesvg-svg.svg');
-    background-position: center;
-    background-size: 75% 75%;
-    
-    background-color: rgba(255, 255, 255, 0.158);
-
-    border: none;
-    cursor: pointer;
-}
-
-.header-price-uptrend::before {
-    content: '\25B2';
-    
-}
-
-.header-price-uptrend {
-   background-color: rgb(31, 167, 31);
-   border-radius: 1rem;
-}
-
-.header-price-downtrend::before {
-    content: '\25BC';
-}
-
-.header-price-downtrend {
-    background-color: var(--downtrend-font-clr);
-    border-radius: 1rem;
-}
-
-.header-price-neutral {
-    background-color: gainsboro;
-    border-radius: 1rem;
-}
-
-
-/* DIV DYNAMIC PRICE SLIDER STYLING */
-
-
-.dynamic-price-headings {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 0.875rem;
-    margin-right: 0.875rem;
-}
-
-.dynamic-price-headings h4 {
-    margin: 0.375rem 0 0 0;
-    color: white;
-    font-family: var(--data-display-font);
-    font-weight: 400;
-    font-size: 0.875rem;
-}
-
-.full-slider {
-    
-    height: 1rem;
-    background-color: #706b7456;
-
-    margin-top: 1.5rem;
-    margin-left: 0.875rem;
-    margin-right: 0.875rem;
-    border-radius: 1rem;
-}
-
-.dynamic-slider {
-
-    height: 1rem;
-    background-color: rgb(31, 167, 31);
-    border-radius: 1rem;
-}
-
-
-
-
-
-
-
-/* SECTION RESULTS-SECTION-DATA-STYLING */
-
-.results-section-data {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    margin-top: 1.5rem;
-    margin-left: 0.875rem;
-    margin-right: 0.875rem;
-    padding-bottom: 1.25rem;
-
-    border-radius: 1rem;
-    overflow-y: scroll;
-
-}
-
-.results-div {
-    text-align: center;
-    margin-top: 1.125rem;
-    
-    width: 100%;
-    border-radius: 1rem;
-    
-}
-
-.results-heading {
-    color: white;
-    font-family: var(--primary-font);
-    font-weight: 700;
-    font-size: 1.5rem;
-    margin: 0;
-}
-
-.results-data {
-    color: white;
-    font-family: var(--data-display-font);
     font-weight: 300;
-    font-size: 2rem;
-    margin: 0;
-}
-
-#results-data-ath {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.ath-percentage-change {
-    font-size: 0.85rem;
-    padding-left: 0.625rem;
-}
-
-#negative-ath {
-    color: red;
-}
-
-#positive-ath {
-    color: rgb(12, 236, 12);
 }
 
 
 
+.coindata-image {
 
-/* SECTION RESULTS SECTION SETTINGS STYLING */
-
-.results-section-settings {
-    height: calc(100vh - 22.5rem);
-    background-color: #28294d;
-    border-radius: 0.625rem;
-    margin-top: 1.75rem;
-    
+    width: 1.875rem;
+    height: 1.875rem;
 }
 
-.settings-header {
-    text-align: center;
+.coindata-daily-change {
+
     color: white;
-    font-family: var(--primary-font);
-    padding-top: 2.25rem;
-    padding-bottom: 3.75rem;
-}
-
-.results-section-settings label {
-    font-family: var(--secondary-font);
-    color: white;
-    font-size: 1.5rem;
-}
-
-.theme-settings {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 1.875rem;
-    margin-right: 1.875rem;
-    margin-bottom: 3.25rem;
-}
-
-.currency-settings {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 1.875rem;
-    margin-right: 1.875rem;
-}
-
-.results-section-settings select {
-    border: none;
-    font-family: var(--secondary-font);
-    font-size: 1rem;
-    border-radius: 0.625rem;
-    width: 7rem;
-    height: 3.125rem;
-    text-align: center;
-    background-color: black;
-    color: white;
-}
-
-
-/* DROPDOWN SETTINGS DIV */
-
-.dropdown-settings {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100vw;
-    height: 45vh;
-    border-bottom-left-radius: 0.625rem;
-    border-bottom-right-radius: 0.625rem;
-
-    background-color: #5F64D5;
-    color: white;
-    font-family: var(--secondary-font);
-
-    animation: slideIn 0.5s;
-}
-
-.dropdown-settings-hidden {
-    animation: slide-out 0.5s;
-    display: none;
-}
-
-.close-settings-btn {
-    background-image: url('../assets/images/close-svg.svg');
-    background-position: center;
-    background-size: cover;
-
-    border: none;
-    background-color: rgba(255, 255, 255, 0);
-
-    width: 2rem;
-    height: 2rem;
-
-    cursor: pointer;
-    
-    margin-top: 5rem;
-    
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-}
-
-@keyframes slideIn {
-    from {
-        top: -600px;
-    }to {
-        top: 0;
-    }
-}
-
-@keyframes slideOut {
-    from {
-        top: 0;
-    }to {
-        top: -600px;
-    }
-}
-
-
-/* SECTION RESULTS SECTION ERROR STYLING */
-
-.results-section-error {
-    height: calc(100vh - 22.5rem);
-    background-color: #28294d;
-    border-radius: 0.625rem;
-    margin-top: 1.75rem;
-    display: flex;
-    align-items: center;
-}
-
-.error-message-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    border-radius: 0.625rem;
-
-    margin-left: 1rem;
-    margin-right: 1rem;
-}
-
-.errorsvg-img {
-    width: 3.25rem;
-    height: 3.25rem;
-}
-
-.error-message-heading {
-    color: white;
-    font-family: var(--primary-font);
-    font-size: 1.5rem;
-
-    margin-top: 0.75rem;
-    margin-bottom: 1.75rem;
-}
-
-.error-message-desc {
-    color: white;
-    font-family: var(--secondary-font);
+    font-family: var(--data-display-font);
     font-size: 0.75rem;
-    font-weight: 400;
 
-    text-align: center;
-
-
-    margin: 0 1rem 1rem 1rem;
-}
-
-.error-message-link {
-    color: var(--uptrend-font-clr);
-    text-decoration: none;
-}
-
-
-
-/* RESULTS SECTION PLACEHOLDER STYLING */
-
-.results-section-placeholder {
-    height: calc(100vh - 22.5rem);
-    background-color: #5f65d52d;
-    border-radius: 0.625rem;
-    margin-top: 1.75rem;
+    min-width: 3.75rem;
+    min-height: 1.5rem;
 
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+
+    border-radius: 1.875rem;
 }
 
-.results-placeholder-heading {
-    color: rgba(255, 255, 255, 0.304);
-    font-family: var(--primary-font);
-    font-style: italic;
-    text-align: center;
-    font-size: 1rem;
+.coindata-daily-change-negative {
+
+    background-color: red;
 }
+

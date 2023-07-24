@@ -11,6 +11,9 @@
 
     background-color: rgba(0, 0, 0, 0.799);
     
+    animation: fadeIn 0.1s ease-in;
+
+    overflow: hidden;
 }
 
 .settings {
@@ -27,6 +30,9 @@
     flex-direction: column;
 
     position: relative;
+
+    animation: slideIn 0.25s ease-in;
+    
 }
 
 .settings-header {
@@ -41,7 +47,7 @@
 }
 
 .theme-toggle {
-    display: inline-block;
+    
     position: relative;
     width: 4rem;
     height: 1.875rem;
@@ -52,6 +58,9 @@
     top: 1.25rem;
     left: 50%;
     transform: translate(-50%, -50%);
+
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
 }
 
 #theme {
@@ -61,24 +70,20 @@
 }
 
 .theme-slider {
-    position: absolute;
+    
     cursor: pointer;
-
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-
     transition: 0.25s;
 }
 
 .theme-slider::before {
+
     position: absolute;
     content: "";
     height: 1.5rem;
     width: 1.5rem;
-    left: 4px;
-    bottom: 4px;
+
+    top: 2px;
+    
     background-color: #848FF4;
 
     border-radius: 1.875rem;
@@ -104,7 +109,7 @@
 .theme-choice {
 
     color: white;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-family: var(--secondary-font);
     font-weight: 300;
 }
@@ -129,6 +134,9 @@
     padding-right: 0.2rem;
     padding-left: 0.2rem;
 
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+
 }
 
 .original-slider::-webkit-slider-thumb {
@@ -136,8 +144,8 @@
     -webkit-appearance: none;
     appearance: none;
 
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
     background: #848FF4; 
     cursor: pointer; 
     border-radius: 50%;
@@ -150,14 +158,16 @@
 
 .original-slider::-moz-range-thumb {
 
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.5rem;
+    height: 1.5rem;
     background: #848FF4; 
     cursor: pointer; 
     border-radius: 50%;
     
     border: none;
     outline: none;
+
+    
   }
 
 
@@ -170,6 +180,12 @@
     margin-top: 4rem;
     position: relative;
 }
+
+#custom-range {
+
+    height: 1.875rem;
+}
+
 
 .currency-selection-labels-container {
 
@@ -193,7 +209,7 @@
 
     text-transform: uppercase;
 
-    padding: 0.5rem 0 0.5rem 0;
+    padding: 0.55rem 0 0.55rem 0;
 }
 
 
@@ -216,4 +232,26 @@
 
     font-family: var(--primary-font);
     font-weight: 700;
+
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+}
+
+
+/* Keyframes */
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
 }

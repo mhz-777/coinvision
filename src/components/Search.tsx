@@ -2,30 +2,35 @@ import { useState } from 'react';
 import './Search.css';
 
 interface searchProps {
+
     onSearchTermChange: (value:string) => void;
+    invalidSearch: boolean;
+    setInvalidSearch: (value:boolean) => void;
 }
 
-const Search: React.FC<searchProps> = ({onSearchTermChange}) => {
+const Search: React.FC<searchProps> = ({onSearchTermChange, invalidSearch, setInvalidSearch}) => {
 
     const [userQuery, setUserQuery] = useState<string>('');
-    const [invalid, setInvalid] = useState<string>('');
+    
 
 
-    // function to handle submission with error check
-    const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleFormSubmit = (event:React.FormEvent<HTMLFormElement>) => {
+
         event.preventDefault();
-        
-        //prevent empty input
+
+        // prevent empty input
         if(!userQuery) {
-            setInvalid('Cannot submit blank!');
+            setInvalidSearch(true);
             return;
         }
-        setInvalid('');
+        
+        setInvalidSearch(false);
         onSearchTermChange(userQuery);
+
     }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInvalid('');
+        setInvalidSearch(false);
         setUserQuery(event.target.value);
     }
 
@@ -37,7 +42,7 @@ const Search: React.FC<searchProps> = ({onSearchTermChange}) => {
                 onChange={handleChange}
                 className='search-input'
             />
-            {invalid && <div className='form-error-message'>Please enter a coin name.</div>}
+            {invalidSearch && <div className='form-error-message'>Please enter a coin name.</div>}
             <button type="submit" className='search-btn'>search</button>
         </form>
     );
