@@ -3,9 +3,9 @@
 :root {
 
     /* fonts */
-    --primary-font: 'Raleway', sans-serif;
-    --secondary-font: 'Merriweather', serif;
-    --data-display-font: 'Roboto', sans-serif;
+    --primary-font: 'Raleway', Trebuchet MS, sans-serif;
+    --secondary-font: 'Merriweather', Times New Roman, Times, serif;
+    --data-display-font: 'Roboto', Arial, Helvetica, sans-serif;
 
     /* colours */
     --light-theme-font-clr: #ffffff;

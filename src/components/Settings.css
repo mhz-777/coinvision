@@ -50,7 +50,7 @@
     
     position: relative;
     width: 4rem;
-    height: 1.875rem;
+    height: 2rem;
 
     background-color: #848ff433;
     border-radius: 1.875rem;
@@ -72,7 +72,7 @@
 .theme-slider {
     
     cursor: pointer;
-    transition: 0.25s;
+    
 }
 
 .theme-slider::before {
@@ -81,14 +81,13 @@
     content: "";
     height: 1.5rem;
     width: 1.5rem;
-
-    top: 2px;
+    
     
     background-color: #848FF4;
 
     border-radius: 1.875rem;
 
-    transition: 0.25s;
+    
 
 }
 

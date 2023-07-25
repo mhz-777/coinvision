@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import './Results.css'
+import './Results.css';
+import LoadingIndicator from './LoadingIndicator';
+import hyperlinkSVG from '../assets/images/hyperlink-svg.svg';
 
 interface resultProps {
     searchTerm: string;
@@ -24,11 +26,40 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency} ) => {
         sparklineData: []
     });
 
+    // state to manage loading
+    const [isLoading, setLoading] = useState<boolean>(false);
+
     // state to manage errors
     const [error, setError] = useState<boolean>(false);
     const [validSearch, setValidSearch] = useState<boolean>(false);
 
-    
+    // function to extract important info from URL
+    const extractDomain = (url:string) => {
+
+        const pattern = /https?:\/\/([\w.-]+)/;
+        const match = url.match(pattern);
+        return match ? match[1].replace(/^www\./, '') : null;
+    }
+
+    // function to calculate width of dynamic slider
+    const calcSliderWidth = () => {
+
+        let currentPrice = coinAttributes.coinPrice;
+        let minPrice = coinAttributes.dailyLow;
+        let maxPrice = coinAttributes.dailyHigh;
+
+        // set div width to 0 if price is lower then 24hr low
+        if(currentPrice < minPrice) {
+            return 0;
+        }
+
+        // set div width to 100 if price is higher than 24hr high
+        if(currentPrice > maxPrice) {
+            return 100;
+        }
+
+        return ((currentPrice - minPrice) / (maxPrice - minPrice)) * 100;
+    }
 
     // url based off user query
     let apiURL = `https://api.coingecko.com/api/v3/coins/${searchTerm.toLowerCase()}?tickers=false&market_data=true&community_data=false&developer_data=true&sparkline=true`;
@@ -36,6 +67,7 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency} ) => {
     // function to get and set data from user query
     const getCoinData = async () => {
         try {
+            setLoading(true);
             const response = await fetch(apiURL);
             const coinData = await response.json();
             setCoinAttributes({
@@ -54,6 +86,8 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency} ) => {
         }catch (error) {
             setValidSearch(false);
             setError(true);
+        }finally {
+            setLoading(false);
         }
 
     }
@@ -63,9 +97,14 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency} ) => {
         getCoinData();
     }, [searchTerm, currency]);
 
-    if(validSearch === true) {
+    if(isLoading === true){
+        return (
+            <LoadingIndicator />
+        );
+    } else if(validSearch === true && isLoading === false) {
         return (
             <section className="coindata-section">
+
                 <section className="coindata-header-section">
                     <div className="coindata-nameprice-container">
                         <img src={coinAttributes.coinImage} alt="coin" className='coindata-image' />
@@ -82,9 +121,37 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency} ) => {
                     }
                     
                 </section>
+
+                <section className="coindata-misc-section">
+                    <span className="coindata-misc-info">Rank {coinAttributes.marketcapRank}</span>
+                    <a 
+                    href={coinAttributes.website} 
+                    target='_blank'
+                    className="coindata-misc-info" 
+                    id='coindata-misc-info-site'>
+                        <img src={hyperlinkSVG} alt="hyperlink" className="hyperlink-svg" />
+                        {extractDomain(coinAttributes.website)}
+                    </a>
+                </section>
+
+                <section className="coindata-dynamic-slider">
+                    <div className="full-slider">
+                        <div className="dynamic-slider" style={{width: `${calcSliderWidth()}%`}}></div>
+                    </div>
+                    <div className="dynamic-price-headings">
+                        <h4>${coinAttributes.dailyLow}</h4>
+                        <h4>24H Range</h4>
+                        <h4>${coinAttributes.dailyHigh}</h4>
+                    </div>
+                </section>
+
+                <section className="coindata-trend-graph">
+                    <h1 className="trend-graph-header">7 day trend</h1>
+                </section>
+
             </section>
         );
-    }else {
+    } else {
         return (
             <h1>wow</h1>
         );

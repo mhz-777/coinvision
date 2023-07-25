@@ -56,19 +56,13 @@ const Trends: React.FC<trendProps> = ({siteSection, setIsLoading}) => {
         }
   }
 
-    // function to round off data to prevent overflow for smaller denominations
-     const formatData = (value:string) => {
-        return Math.round((Number(value) + Number.EPSILON) * 100) / 100;
-    }
-
-
     // state to store trends info
     const [trendsInfo, setTrendsInfo] = useState({
-        marketMovement: '',
-        btcDominance: '',
-        ethDominance: '',
-        btcDailyTrend: '',
-        ethDailyTrend: ''
+        marketMovement: 0,
+        btcDominance: 0,
+        ethDominance: 0,
+        btcDailyTrend: 0,
+        ethDailyTrend: 0
     });
 
     // fetch data from api and store results
@@ -79,7 +73,7 @@ const Trends: React.FC<trendProps> = ({siteSection, setIsLoading}) => {
 
 
     // state to store dynamic welcome message
-    const [timeOfDayMessage, setTimeOfDayMessage] = useState('');
+    const [timeOfDayMessage, setTimeOfDayMessage] = useState<string>('');
 
     // update state when sections are loaded / switched
     useEffect(() => {
@@ -100,14 +94,14 @@ const Trends: React.FC<trendProps> = ({siteSection, setIsLoading}) => {
             <h1 className='find-section-header'>{timeOfDayMessage}</h1>
             <section className="trends-information-section">
             {Number(trendsInfo.marketMovement) > 0 && 
-            <p className='trends-info'>Markets are <span className='rising-trend'>up</span> {formatData((trendsInfo.marketMovement))}% today.</p>
+            <p className='trends-info'>Markets are <span className='rising-trend'>up</span> {(trendsInfo.marketMovement).toFixed(2)}% today.</p>
             }
             {Number(trendsInfo.marketMovement) < 0 && 
-            <p className="trends-info">Markets are <span className='falling-trend'>down</span> {formatData((trendsInfo.marketMovement)) * -1}% today.</p>
+            <p className="trends-info">Markets are <span className='falling-trend'>down</span> {(trendsInfo.marketMovement * -1).toFixed(2)}% today.</p>
             }
             
-            <p className='trends-info'>Bitcoin dominance at <span className="rising-trend">{formatData((trendsInfo.btcDominance))}%</span></p>
-            <p className='trends-info'>Ethereum dominance at <span className="rising-trend">{formatData((trendsInfo.ethDominance))}%</span></p>
+            <p className='trends-info'>Bitcoin dominance at <span className="rising-trend">{(trendsInfo.btcDominance).toFixed(2)}%</span></p>
+            <p className='trends-info'>Ethereum dominance at <span className="rising-trend">{(trendsInfo.ethDominance).toFixed(2)}%</span></p>
             </section>
             <h1 className="find-section-header">Top Coin Activity</h1>
             <section className="trends-coin-activity">
@@ -117,10 +111,10 @@ const Trends: React.FC<trendProps> = ({siteSection, setIsLoading}) => {
                     <h1 className="coin-activity-name">Bitcoin</h1>
                 </div>
                 {Number(trendsInfo.btcDailyTrend) > 0 && 
-                    <span className="coin-activity-change coin-activity-uptrend">&#9650;{formatData(trendsInfo.btcDailyTrend)}%</span>
+                    <span className="coin-activity-change coin-activity-uptrend">&#9650;{(trendsInfo.btcDailyTrend).toFixed(2)}%</span>
                 }
                 {Number(trendsInfo.btcDailyTrend) <= 0 && 
-                    <span className="coin-activity-change coin-activity-downtrend">&#9660;{formatData(trendsInfo.btcDailyTrend)}%</span>
+                    <span className="coin-activity-change coin-activity-downtrend">&#9660;{(trendsInfo.btcDailyTrend).toFixed(2)}%</span>
                 } 
 
                 </div>
@@ -130,10 +124,10 @@ const Trends: React.FC<trendProps> = ({siteSection, setIsLoading}) => {
                     <h1 className="coin-activity-name">Ethereum</h1>
                 </div>
                 {Number(trendsInfo.ethDailyTrend) > 0 &&
-                    <span className="coin-activity-change coin-activity-uptrend">&#9650;{formatData(trendsInfo.ethDailyTrend)}%</span>
+                    <span className="coin-activity-change coin-activity-uptrend">&#9650;{(trendsInfo.ethDailyTrend).toFixed(2)}%</span>
                 }
                 {Number(trendsInfo.ethDailyTrend) <= 0 && 
-                    <span className="coin-activity-change coin-activity-downtrend">&#9660;{formatData(trendsInfo.ethDailyTrend)}%</span>
+                    <span className="coin-activity-change coin-activity-downtrend">&#9660;{(trendsInfo.ethDailyTrend).toFixed(2)}%</span>
                 } 
                 </div>
             </section>
