@@ -2,13 +2,17 @@ import { useEffect, useState } from 'react';
 import './Results.css';
 import LoadingIndicator from './LoadingIndicator';
 import hyperlinkSVG from '../assets/images/hyperlink-svg.svg';
+import { LineChart, Line, ResponsiveContainer, YAxis, XAxis} from 'recharts';
+
 
 interface resultProps {
     searchTerm: string;
     currency: string;
+    favorites: string[];
+    addFavorite: (value:string) => void;
 }
 
-const Results: React.FC<resultProps> = ( {searchTerm, currency} ) => {
+const Results: React.FC<resultProps> = ( {searchTerm, currency, favorites, addFavorite} ) => {
 
 
 
@@ -23,7 +27,7 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency} ) => {
         marketcapRank: 0,
         dailyHigh: 0,
         dailyLow: 0,
-        sparklineData: []
+        sparklineData: [] as number[]
     });
 
     // state to manage loading
@@ -91,11 +95,17 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency} ) => {
         }
 
     }
-
+    
     // refresh data 
     useEffect(()=> {
         getCoinData();
     }, [searchTerm, currency]);
+
+    const chartData = coinAttributes.sparklineData;
+    const formattedChartData = chartData.map((y, index) => ({x: index, y}));
+    const graphMinValue = Math.min(...chartData);
+    const graphMaxValue = Math.max(...chartData);
+    
 
     if(isLoading === true){
         return (
@@ -147,7 +157,21 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency} ) => {
 
                 <section className="coindata-trend-graph">
                     <h1 className="trend-graph-header">7 day trend</h1>
+                    
+                    <ResponsiveContainer width="100%" aspect={2} >
+                        <LineChart data={formattedChartData}>
+                            <Line type="monotone" dataKey="y" stroke="#ffffff" dot={false} />
+                            <XAxis hide={true}/>
+                            <YAxis hide={true} domain={[graphMinValue, graphMaxValue]} />
+                        </LineChart>
+                    </ResponsiveContainer>      
+                
                 </section>
+
+                <div className="fav-btn-container">
+                    <button className="add-favorite-btn" onClick={()=> addFavorite(searchTerm)}>Favorite</button>
+                </div>   
+                
 
             </section>
         );

@@ -161,6 +161,8 @@ const App = () => {
                   <Results
                     searchTerm={searchTerm}
                     currency={convertedCurrency}
+                    favorites={favorites}
+                    addFavorite={addFavorite}
                   />
                 }
                 
@@ -168,7 +170,9 @@ const App = () => {
             </section>
           }
           {siteSection === true &&
-            <h1>this is a test!</h1>
+            <Favorites
+              favorites={favorites}
+            />
           }
         </main>
       </div>

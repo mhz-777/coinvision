@@ -41,7 +41,6 @@ const Search: React.FC<searchProps> = ({onSearchTermChange, invalidSearch, setIn
                 value={userQuery}
                 onChange={handleChange}
                 className='search-input'
-                placeholder='Enter a coin (e.g Bitcoin)'
             />
             {invalidSearch && <div className='form-error-message'>Please enter a coin name.</div>}
             <button type="submit" className='search-btn'>search</button>

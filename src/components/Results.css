@@ -184,3 +184,38 @@
     text-align: center;
 }
 
+.chart-container {
+    display: flex;
+    
+}
+
+.recharts-responsive-container {
+
+    margin-top: 1rem;
+
+    background-color: #706b743f;
+    border-radius: 0.9375rem;
+}
+
+.fav-btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.add-favorite-btn {
+
+
+    margin-top: 1.5rem;
+
+    width: 5.25rem;
+    height: 2rem;
+
+    font-family: var(--primary-font);
+    color: white;
+    cursor: pointer;
+
+    background-color: transparent;
+    border: 1px solid #706b74;
+    border-radius: 1.875rem; 
+
+}
