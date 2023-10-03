@@ -101,10 +101,15 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency, favorites, addFa
         getCoinData();
     }, [searchTerm, currency]);
 
+
+    // charting stuff lol
     const chartData = coinAttributes.sparklineData;
     const formattedChartData = chartData.map((y, index) => ({x: index, y}));
     const graphMinValue = Math.min(...chartData);
     const graphMaxValue = Math.max(...chartData);
+
+    // check if searchTerm exists in favorite array
+    const isFavorited = favorites.includes(searchTerm);
     
 
     if(isLoading === true){
@@ -169,7 +174,7 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency, favorites, addFa
                 </section>
 
                 <div className="fav-btn-container">
-                    <button className="add-favorite-btn" onClick={()=> addFavorite(searchTerm)}>Favorite</button>
+                    <button className="add-favorite-btn" onClick={()=> addFavorite(searchTerm)}>{isFavorited ? 'Favorited' : 'Favorite'}</button>
                 </div>   
                 
 

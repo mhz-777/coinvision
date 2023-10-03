@@ -1,59 +1,25 @@
+
 .toggle-nav-container {
-    
-    padding-top: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.625rem;
-    text-transform: lowercase;
+
+  display: flex;
+  justify-content: center;
+
+  margin-top: 2rem;
 }
 
-.toggle-text {
+.toggle-site-section-btn {
 
-    color: white;
-    font-family: var(--secondary-font);
-    font-weight: 300;
-    font-size: 0.7rem;
+  cursor: pointer;
+  color: transparent;
+  border: none;
+
+  width: 2rem;
+  height: 2rem;
+  border-radius: 1.875rem;
+
+  background-color: #848ff42d;
+
+  
+
+  
 }
-
-.toggle-text-disabled {
-    
-    font-family: var(--secondary-font);
-    font-weight: 300;
-    font-size: 0.7rem;
-    color: #ffffff35;
-}
-
-.toggle {
-    position: relative;
-    display: inline-block;
-    
-    height: 1.875rem;
-  }
-  
-  .toggle input {
-    display: none;
-  }
-  
-  .slider {
-    
-    cursor: pointer;
-    background-color: hsla(237, 58%, 60%, 0.5);
-    border-radius: 1.875rem;
-    transition: 0.4s;
-  }
-  
-  .slider:before {
-    
-    background-color: var(--accent-clr);
-    border-radius: 50%;
-    transition: 0.3s;
-  }
-  
-  input:checked + .slider {
-    background-color: hsla(237, 58%, 60%, 0.5);
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(1.875rem);
-  }

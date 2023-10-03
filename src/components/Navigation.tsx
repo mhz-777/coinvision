@@ -15,18 +15,7 @@ const Navigation: React.FC<navigationProps> = ({siteSection, handleChange}) => {
 
     return (
         <div className="toggle-nav-container">
-          <span className={`toggle-text ${siteSection ? 'toggle-text-disabled' : ''}`}>Find</span>
-          <label htmlFor="toggle" className='toggle'>
-              <input 
-              type="checkbox" 
-              name="toggle" 
-              id="toggle"
-              onChange={handleChange}
-              checked={siteSection}
-              />
-              <span className="slider"></span>
-          </label>
-          <span className={`toggle-text ${siteSection ? '' : 'toggle-text-disabled'}`}>Favorites</span>
+          <button className="toggle-site-section-btn" onClick={handleChange}>Click</button>
         </div>
     );
 }

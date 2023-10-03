@@ -130,7 +130,7 @@ const App = () => {
     return (
       <div className="App" style={{backgroundColor: theme ? '#2D2D4F' : '#121212'}}>
         
-        <Navigation siteSection={siteSection}  handleChange={handleSiteSectionChange}/>
+        
 
         <header className='app-header'>
             <h1 className='site-header'>coinvision.</h1>
@@ -174,7 +174,10 @@ const App = () => {
               favorites={favorites}
             />
           }
+
+              
         </main>
+        <Navigation siteSection={siteSection}  handleChange={handleSiteSectionChange}/>
       </div>
     );
   }
