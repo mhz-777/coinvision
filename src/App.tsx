@@ -35,11 +35,12 @@ const App = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // site section state
-  const [siteSection, setSiteSection] = useState<boolean>(false);
+  const [siteSectionChanged, setSiteSectionChanged] = useState<boolean>(false);
 
   // function to set site section
   const handleSiteSectionChange = () => {
-    setSiteSection((prevState) => !prevState);
+    setSiteSectionChanged((prevState) => !prevState);
+    setSearchTerm(''); // clear prev search to return to landing
   }
 
   // passdown function for search
@@ -132,13 +133,13 @@ const App = () => {
         
         
 
-        <header className='app-header'>
+        <header className={`app-header ${siteSectionChanged ? 'hidden' : ''}`}>
             <h1 className='site-header'>coinvision.</h1>
             <button className="settings-btn" onClick={handleMenuClick}></button>
             {isClicked && <Settings theme={theme} setTheme={setTheme} currency={currency} setCurrency={setCurrency} isClicked={isClicked} setClicked={setClicked} />}
         </header>
         <main>
-          {siteSection === false &&
+          {siteSectionChanged === false &&
             <section className="landing">
 
                 <Search 
@@ -152,7 +153,7 @@ const App = () => {
 
                 {searchTerm === '' &&
                     <Trends 
-                      siteSection={siteSection}
+                      siteSection={siteSectionChanged}
                       isLoading={isLoading}
                       setIsLoading={setIsLoading}
                     />
@@ -169,15 +170,20 @@ const App = () => {
               
             </section>
           }
-          {siteSection === true &&
+          {siteSectionChanged === true &&
             <Favorites
               favorites={favorites}
+              currency={convertedCurrency}
+              handleChange={handleSiteSectionChange}
             />
           }
 
               
         </main>
-        <Navigation siteSection={siteSection}  handleChange={handleSiteSectionChange}/>
+        {siteSectionChanged === false && (
+          <Navigation siteSection={siteSectionChanged}  handleChange={handleSiteSectionChange}/>
+        )}
+        
       </div>
     );
   }

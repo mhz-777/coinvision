@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './Results.css';
 import LoadingIndicator from './LoadingIndicator';
 import hyperlinkSVG from '../assets/images/hyperlink-svg.svg';
+import errorSVG from '../assets/images/errorsvgtriangle.svg';
 import { LineChart, Line, ResponsiveContainer, YAxis, XAxis} from 'recharts';
 
 
@@ -114,7 +115,9 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency, favorites, addFa
 
     if(isLoading === true){
         return (
-            <LoadingIndicator />
+            <div className="loading-div">
+                <LoadingIndicator />
+            </div>
         );
     } else if(validSearch === true && isLoading === false) {
         return (
@@ -182,7 +185,11 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency, favorites, addFa
         );
     } else {
         return (
-            <h1>wow</h1>
+            <div className="error-message-container">
+                <img src={errorSVG} alt="error triangle" className='errorSVG' />
+                <p className="coin404-message">Coin not found.</p>
+                <a href="https://docs.google.com/spreadsheets/d/1wTTuxXt8n9q7C4NDXqQpI3wpKu1_5bGVmP9Xz0XGSyU/edit#gid=0" target="_blank" className='coin404-redirect'>Coin List</a>
+            </div>
         );
     }
 }

@@ -1,9 +1,6 @@
-.trends-information-section-container {
-    position: relative;
-    
-}
 
-.loading-div-container {
+
+.loading-div {
     position: absolute;
     width: 100%;
     height: 100%;

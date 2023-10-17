@@ -24,6 +24,10 @@
 
 /* mobile design */
 
+.hidden {
+    display: none !important;
+}
+
 .App {
     
     background-color: #2D2D4F;

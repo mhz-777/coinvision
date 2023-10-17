@@ -1,5 +1,224 @@
 
 
+.favorites-container {
+
+    margin-top: 2rem;
+}
+
+.user-favorite-container {
+
+    
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.user-favorite {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 3rem;
+}
+
+.favdata-nameprice-container {
+
+    display: flex;
+    align-items: center;
+}
+
+.favdata-nameprice-group {
+
+    margin-left: 0.5rem;
+}
+
+.favdata-name {
+
+    margin: 0;
+
+    color: white;
+    font-family: var(--secondary-font);
+    font-size: 1.25rem;
+    font-weight: 700;
+
+}
+
+.favdata-price {
+
+    margin: 0;
+
+    margin-top: -0.3rem;
+
+    color: white;
+    font-family: var(--data-display-font);
+    font-size: 0.75rem;
+    font-weight: 300;
+
+    letter-spacing: 0.02rem;
+}
 
 
 
+.favdata-image {
+
+    width: 1.875rem;
+    height: 1.875rem;
+}
+
+.favdata-daily-change {
+
+    color: white;
+    font-family: var(--data-display-font);
+    font-size: 0.75rem;
+
+    min-width: 3.75rem;
+    min-height: 1.75rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 1.875rem;
+}
+
+.favdata-daily-change-negative {
+
+    background-color: red;
+}
+
+
+.favdata-daily-change-positive {
+
+    background-color: #16BA1D;
+}
+
+
+.no-favorites-header {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2.875rem;
+    
+}
+
+.favorites-header {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 5.75rem;
+}
+
+.no-favorites-message {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin-top: 128px;
+}
+
+.fav-heading {
+
+    color: white;
+    font-family: var(--primary-font);
+    font-size: 1.25rem;
+
+    
+}
+
+.return-btn-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: #848ff432;
+    border-radius: 50%;
+
+    
+}
+
+.return-btn {
+
+    color: transparent;
+
+    background-image: url('../assets/images/home-svg.svg');
+    background-size: 1.5rem 1.5rem;
+    background-position: center;
+    background-color: transparent;
+    
+
+    width: 1.875rem;
+    height: 1.875rem;
+    border: none;
+
+    border-radius: 50%;
+    cursor: pointer;
+
+    
+}
+
+
+.questionMarkSVG {
+    
+    background-color: #5f65d512;
+    border-radius: 50%;
+
+    width: 60px;
+    height: 60px;
+}
+
+.no-favorites-header {
+
+    color: white;
+    font-family: var(--secondary-font);
+    font-weight: 300;
+    font-size: 0.85rem;
+}
+
+.error-message-container {
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    margin-top: 5rem;
+}
+
+.errorSVG {
+
+    width: 5rem;
+    height: 5rem;
+}
+
+.coin404-message {
+
+    color: white;
+    font-family: var(--secondary-font);
+    font-size: 1rem;
+    font-weight: 300;
+
+    text-align: center;
+
+    margin-bottom: 2rem;
+}
+
+.coin404-redirect {
+
+    color: white;
+    font-family: var(--secondary-font);
+    font-weight: 300;
+    font-size: 0.825rem;
+
+    text-decoration: none;
+
+    background-color: var(--search-btn-color-clr);
+    padding: 8px 24px 8px 24px;
+    border-radius: 2.8rem;
+
+}
