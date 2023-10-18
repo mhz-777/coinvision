@@ -131,58 +131,62 @@ const App = () => {
     return (
       <div className="App" style={{backgroundColor: theme ? '#2D2D4F' : '#121212'}}>
         
-        
+        <div className="app-container">
 
-        <header className={`app-header ${siteSectionChanged ? 'hidden' : ''}`}>
-            <h1 className='site-header'>coinvision.</h1>
-            <button className="settings-btn" onClick={handleMenuClick}></button>
-            {isClicked && <Settings theme={theme} setTheme={setTheme} currency={currency} setCurrency={setCurrency} isClicked={isClicked} setClicked={setClicked} />}
-        </header>
-        <main>
-          {siteSectionChanged === false &&
-            <section className="landing">
+          <header className={`app-header ${siteSectionChanged ? 'hidden' : ''}`}>
+              <h1 className='site-header'>coinvision.</h1>
+              <button className="settings-btn" onClick={handleMenuClick}></button>
+              {isClicked && <Settings theme={theme} setTheme={setTheme} currency={currency} setCurrency={setCurrency} isClicked={isClicked} setClicked={setClicked} />}
+          </header>
+          
+          <main>
+            {siteSectionChanged === false &&
+              <section className="landing">
 
-                <Search 
-                  onSearchTermChange={handleSearchTermChange}
-                  invalidSearch={invalidSearch}
-                  setInvalidSearch={setInvalidSearch}
-                />
-
-
-
-
-                {searchTerm === '' &&
-                    <Trends 
-                      siteSection={siteSectionChanged}
-                      isLoading={isLoading}
-                      setIsLoading={setIsLoading}
-                    />
-                }
-                {searchTerm != '' &&
-                  <Results
-                    searchTerm={searchTerm}
-                    currency={convertedCurrency}
-                    favorites={favorites}
-                    addFavorite={addFavorite}
+                  <Search 
+                    onSearchTermChange={handleSearchTermChange}
+                    invalidSearch={invalidSearch}
+                    setInvalidSearch={setInvalidSearch}
                   />
-                }
-                
-              
-            </section>
-          }
-          {siteSectionChanged === true &&
-            <Favorites
-              favorites={favorites}
-              currency={convertedCurrency}
-              handleChange={handleSiteSectionChange}
-            />
-          }
 
-              
-        </main>
-        {siteSectionChanged === false && (
-          <Navigation siteSection={siteSectionChanged}  handleChange={handleSiteSectionChange}/>
-        )}
+
+
+
+                  {searchTerm === '' &&
+                      <Trends 
+                        siteSection={siteSectionChanged}
+                        isLoading={isLoading}
+                        setIsLoading={setIsLoading}
+                      />
+                  }
+                  {searchTerm != '' &&
+                    <Results
+                      searchTerm={searchTerm}
+                      currency={convertedCurrency}
+                      favorites={favorites}
+                      addFavorite={addFavorite}
+                    />
+                  }
+                  
+                
+              </section>
+            }
+            {siteSectionChanged === true &&
+              <Favorites
+                favorites={favorites}
+                currency={convertedCurrency}
+                handleChange={handleSiteSectionChange}
+              />
+            }
+
+                
+          </main>
+          {siteSectionChanged === false && (
+            <Navigation siteSection={siteSectionChanged}  handleChange={handleSiteSectionChange}/>
+          )}
+        </div>
+
+        
         
       </div>
     );

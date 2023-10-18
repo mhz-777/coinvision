@@ -237,6 +237,24 @@
 
 }
 
+@media screen and (height >= 750px) {
+
+    .settings-header {
+
+        margin-top: 7rem;
+    }
+    
+}
+
+@media screen and (height >= 1000px) and (width >= 1000px) {
+
+    .settings {
+
+        width: 25%;
+    };
+    
+}
+
 
 /* Keyframes */
 

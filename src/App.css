@@ -33,9 +33,13 @@
     background-color: #2D2D4F;
     width: 100lvw;
     height: 100lvh;
+    overflow: hidden;
+}
+
+.app-container {
+
     padding-left: 1.75rem;
     padding-right: 1.75rem;
-    overflow: hidden;
 }
 
 .app-header{
@@ -144,7 +148,59 @@
     font-weight: 300;
     font-size: 1rem;
 
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+
+}
+
+@media screen and (height >= 750px) {
+
+    .App {
+
+        padding-top: 4.85rem;
+    }
+
+}
+
+@media screen and (height > 750px) and (width >= 750px) {
+    
+
+    .App {
+        
+        padding-top: 6rem;
+        padding-left: 8rem;
+        padding-right: 8rem;
+    }
+}
+
+@media screen and (orientation: landscape) {
+
+    .App {
+
+        overflow-y: scroll;
+    }
+}
+
+
+@media screen and (width >= 1000px) and (height >= 1000px) {
+
+   
+    .App {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .app-container {
+
+        width: 50%;
+        
+    }
+
+    
+    
 }
 
 
