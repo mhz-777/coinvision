@@ -66,13 +66,20 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency, favorites, addFa
         return ((currentPrice - minPrice) / (maxPrice - minPrice)) * 100;
     }
 
-    // url based off user query
-    let apiURL = `https://api.coingecko.com/api/v3/coins/${searchTerm.toLowerCase()}?tickers=false&market_data=true&community_data=false&developer_data=true&sparkline=true`;
+    // url based off user query, casts lowercase and removes spaces from query
+    let apiURL = `https://api.coingecko.com/api/v3/coins/${searchTerm.toLowerCase().replace(/\s/g, '')}?tickers=false&market_data=true&community_data=false&developer_data=true&sparkline=true`;
 
     // function to get and set data from user query
     const getCoinData = async () => {
+
+        setLoading(true);
+
+        // Delay function execution for 3 seconds cuz API rate limit
+        await new Promise((resolve) => {
+        setTimeout(resolve, 3000);
+        });
+
         try {
-            setLoading(true);
             const response = await fetch(apiURL);
             const coinData = await response.json();
             setCoinAttributes({
@@ -97,7 +104,7 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency, favorites, addFa
 
     }
     
-    // refresh data 
+    // refresh data
     useEffect(()=> {
         getCoinData();
     }, [searchTerm, currency]);

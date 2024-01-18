@@ -1,32 +1,66 @@
 
-.toggle-nav-container {
+.nav-container {
+
+  
+  background-color: #ffffff06;
+  
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 3.125rem;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+
+.wowzers {
 
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 5rem;
 
-  margin-top: 2rem;
-
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  height: 100%;
 }
 
 .toggle-site-section-btn {
 
   cursor: pointer;
   color: transparent;
+  background-color: transparent;
   border: none;
 
-  width: 2rem;
-  height: 2rem;
-  border-radius: 1.875rem;
+  height: 100%;
 
-  background-color: #d9d9d9;
+}
 
+#navigation-search {
+
+  background-image: url(../assets/images/navigation-search-svg.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  
+}
+
+#navigation-home {
+
+  background-image: url(../assets/images/navigation-home-svg.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+
+#navigation-favorites {
+
+  background-image: url(../assets/images/navigation-heart-svg.svg);
+  background-position: center;
+  background-repeat: no-repeat;
   
 
   
 }
-
 

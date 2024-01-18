@@ -49,7 +49,7 @@ const Trends: React.FC<trendProps> = ({siteSection, setIsLoading}) => {
             ethDailyTrend: ethTrendsData.market_data.price_change_percentage_24h
         });
         } catch (error) {
-        console.log('im too lazy to tell u what happened so enjoy');
+        console.log(error);
         } finally {
         setIsLoading(false);
         

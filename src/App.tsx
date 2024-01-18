@@ -181,11 +181,11 @@ const App = () => {
 
                 
           </main>
-          {siteSectionChanged === false && (
-            <Navigation siteSection={siteSectionChanged}  handleChange={handleSiteSectionChange}/>
-          )}
+         
         </div>
-
+        {siteSectionChanged === false && (
+            <Navigation siteSection={siteSectionChanged}  handleChange={handleSiteSectionChange}/>
+        )}
         
         
       </div>

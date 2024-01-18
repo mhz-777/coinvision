@@ -34,19 +34,23 @@
     width: 100lvw;
     height: 100lvh;
     overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
 }
 
 .app-container {
 
-    padding-left: 1.75rem;
-    padding-right: 1.75rem;
+    
 }
 
 .app-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 3rem;
     margin-bottom: 0.375rem;
 }
 
@@ -153,25 +157,6 @@
 
 }
 
-@media screen and (height >= 750px) {
-
-    .App {
-
-        padding-top: 4.85rem;
-    }
-
-}
-
-@media screen and (height > 750px) and (width >= 750px) {
-    
-
-    .App {
-        
-        padding-top: 6rem;
-        padding-left: 8rem;
-        padding-right: 8rem;
-    }
-}
 
 @media screen and (orientation: landscape) {
 
@@ -195,7 +180,7 @@
 
     .app-container {
 
-        width: 50%;
+        width: 35%;
         
     }
 

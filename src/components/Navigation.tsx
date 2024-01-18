@@ -14,8 +14,13 @@ const Navigation: React.FC<navigationProps> = ({siteSection, handleChange}) => {
 
 
     return (
-        <div className="toggle-nav-container">
-          <button className="toggle-site-section-btn" onClick={handleChange}>Click</button>
+        <div className="nav-container">
+            <nav className="wowzers">
+                <button className="toggle-site-section-btn" id='navigation-search' onClick={handleChange}>Click</button>
+                <button className="toggle-site-section-btn" id='navigation-home' onClick={handleChange}>Click</button>
+                <button className="toggle-site-section-btn" id='navigation-favorites' onClick={handleChange}>Click</button>
+            </nav>
+          
         </div>
     );
 }
