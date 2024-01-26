@@ -5,10 +5,10 @@ import questionMarkSVG from '../assets/images/questionmark-svg.svg';
 interface favoriteProps {
     favorites: string[];
     currency: string;
-    handleChange: () => void;
+    
 }
 
-const Favorites: React.FC<favoriteProps> = ({favorites, currency, handleChange}) => {
+const Favorites: React.FC<favoriteProps> = ({favorites, currency}) => {
 
      // state for favorites attributes
     const [favoriteData, setFavoriteData] = useState<any[]>([]);
@@ -48,9 +48,6 @@ const Favorites: React.FC<favoriteProps> = ({favorites, currency, handleChange})
 
                 <header className="no-favorites-header">
                     <h1 className="fav-heading">coinvision.</h1>
-                    <div className="return-btn-container">
-                        <button className="return-btn" onClick={handleChange}>home</button>
-                    </div>
                 </header>
                 
                 <div className="no-favorites-message">
@@ -66,9 +63,6 @@ const Favorites: React.FC<favoriteProps> = ({favorites, currency, handleChange})
 
                 <header className="favorites-header">
                     <h1 className="fav-heading">coinvision.</h1>
-                    <div className="return-btn-container">
-                        <button className="return-btn" onClick={handleChange}>home</button>
-                    </div>
                 </header>
     
                 {favoriteData.map((data, index) => (

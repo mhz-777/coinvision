@@ -5,7 +5,7 @@ import ethSVG from '../assets/images/trends-eth-svg.svg';
 
 interface trendProps {
 
-    siteSection: boolean;
+    siteSection: string;
     
     isLoading: boolean;
     setIsLoading: (value:boolean) => void;

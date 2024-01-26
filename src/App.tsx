@@ -35,11 +35,11 @@ const App = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   // site section state
-  const [siteSectionChanged, setSiteSectionChanged] = useState<boolean>(false);
+  const [siteSection, setSiteSection] = useState<string>('landing');
 
   // function to set site section
-  const handleSiteSectionChange = () => {
-    setSiteSectionChanged((prevState) => !prevState);
+  const handleSiteSectionChange = (navChoice:string) => {
+    setSiteSection(navChoice);
     setSearchTerm(''); // clear prev search to return to landing
   }
 
@@ -70,7 +70,7 @@ const App = () => {
     }
 }
 
-  // calls function to convert api when currency change is detected 
+  // calls function to refresh data when currency change is detected 
   useEffect(()=> {
     convertCurrency();
   }, [currency])
@@ -133,32 +133,30 @@ const App = () => {
         
         <div className="app-container">
 
-          <header className={`app-header ${siteSectionChanged ? 'hidden' : ''}`}>
+          <header className={`app-header ${siteSection === 'favorites' ? 'hidden' : ''}`}>
               <h1 className='site-header'>coinvision.</h1>
               <button className="settings-btn" onClick={handleMenuClick}></button>
               {isClicked && <Settings theme={theme} setTheme={setTheme} currency={currency} setCurrency={setCurrency} isClicked={isClicked} setClicked={setClicked} />}
           </header>
           
           <main>
-            {siteSectionChanged === false &&
+            {siteSection === 'landing' &&
               <section className="landing">
 
-                  <Search 
+                   <Search 
                     onSearchTermChange={handleSearchTermChange}
                     invalidSearch={invalidSearch}
                     setInvalidSearch={setInvalidSearch}
                   />
 
-
-
-
                   {searchTerm === '' &&
                       <Trends 
-                        siteSection={siteSectionChanged}
+                        siteSection={siteSection}
                         isLoading={isLoading}
                         setIsLoading={setIsLoading}
                       />
                   }
+
                   {searchTerm != '' &&
                     <Results
                       searchTerm={searchTerm}
@@ -167,26 +165,26 @@ const App = () => {
                       addFavorite={addFavorite}
                     />
                   }
-                  
-                
               </section>
             }
-            {siteSectionChanged === true &&
-              <Favorites
-                favorites={favorites}
-                currency={convertedCurrency}
-                handleChange={handleSiteSectionChange}
-              />
-            }
 
+            {siteSection === 'favorites' &&
+
+                <Favorites
+                    favorites={favorites}
+                    currency={convertedCurrency}
+                   
+                />
+
+            }
                 
           </main>
          
         </div>
-        {siteSectionChanged === false && (
-            <Navigation siteSection={siteSectionChanged}  handleChange={handleSiteSectionChange}/>
-        )}
         
+        < Navigation
+            onSiteSectionChange={handleSiteSectionChange}
+        />
         
       </div>
     );
