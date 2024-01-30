@@ -31,6 +31,9 @@ const App = () => {
   // currency choice state (default CAD)
   const [currency, setCurrency] = useState<number>(3);
 
+  // initial site loading status
+  const [initialLoad, setInitialLoad] = useState<boolean>(true);
+
   // site loading status state
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -113,20 +116,39 @@ const App = () => {
     pingAPI();
   }, []);
 
+  // wait 2 seconds on initial site load before loading content
+  useEffect (() => {
+
+    const delayLoading = () => {
+      setTimeout(() => {
+        setInitialLoad(false);
+      }, 2);
+    }
+    delayLoading();
+  }, []);
 
 
 
 
 
 
+
+  // render error message for error state
   if(apiStatus == 'down') {
     return (
       <section className="api-down-section">
         <h1 className="api-down-message">No connection to API. Please try again later.</h1>
       </section>
     );
+  // render loading component when loading
+  } else if (initialLoad === true) {
+    return (
+      <div className="initial-loading-div">
+        <LoadingIndicator />
+      </div>
+    )
   }
-  // render results for find section
+  // render results for main app
   else { 
     return (
       <div className="App" style={{backgroundColor: theme ? '#2D2D4F' : '#121212'}}>
@@ -176,6 +198,13 @@ const App = () => {
                    
                 />
 
+            }
+
+            {siteSection === 'search' &&
+
+              <section className="search-placeholder">
+                  <h1> search something to show results! </h1>
+              </section>
             }
                 
           </main>

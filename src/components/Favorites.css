@@ -2,20 +2,26 @@
 
 .favorites-container {
 
-    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    overflow-y: scroll;
+
+
 }
 
 .user-favorite-container {
 
+    width: 100svw;
+
     
-    margin-left: 1rem;
-    margin-right: 1rem;
 }
 
 .user-favorite {
 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 
     margin-bottom: 3rem;

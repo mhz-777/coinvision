@@ -31,20 +31,23 @@
 .App {
     
     background-color: #2D2D4F;
-    width: 100lvw;
-    height: 100lvh;
-    overflow: hidden;
+    width: 100svw;
+    height: 100svh;
+    
 
     display: flex;
     flex-direction: column;
-
-    justify-content: center;
     align-items: center;
+
+    overflow-x: hidden;
+
+    animation: reveal 0.5s ease-in;
 }
 
 .app-container {
 
-    
+    margin-top: 3.75rem;
+
 }
 
 .app-header{
@@ -197,4 +200,13 @@
     } to {
         rotate: 360deg;
     }
+}
+
+@keyframes reveal { 
+    from {
+        opacity: 0;
+    }to {
+        opacity: 1;
+    }
+    
 }

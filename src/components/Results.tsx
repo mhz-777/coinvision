@@ -76,7 +76,7 @@ const Results: React.FC<resultProps> = ( {searchTerm, currency, favorites, addFa
 
         // Delay function execution for 3 seconds cuz API rate limit
         await new Promise((resolve) => {
-        setTimeout(resolve, 10000);
+        setTimeout(resolve, 3000);
         });
 
         try {
